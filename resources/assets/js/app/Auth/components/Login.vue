@@ -1,32 +1,32 @@
 <template>
-  <div>
+  <div class="w-full max-w-xs">
     <h2>Login</h2>
 
-    <form @submit.prevent="submit" class="w-full max-w-xs">
+    <form @submit.prevent="submit">
       <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="email">
             Email
           </label>
         </div>
         <div class="md:w-2/3">
-          <input v-model="email" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="email" value="Jane Doe" required="true" name="email">
+          <input v-model="email" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="email" required="true" name="email">
         </div>
       </div>
       <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
+          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="password">
             Password
           </label>
         </div>
         <div class="md:w-2/3">
-          <input v-model="password" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" id="inline-username" type="password" placeholder="******************" required="true" name="password">
+          <input v-model="password" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="password" placeholder="***********" required="true" name="password">
         </div>
       </div>
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-green hover:bg-green-light text-white font-bold py-2 px-4 rounded" type="button">
+          <button class="shadow bg-green hover:bg-green-light text-white font-bold py-2 px-4 rounded" type="submit">
             Sign In
           </button>
         </div>
@@ -56,20 +56,16 @@ export default {
     }),
 
     submit () {
+      const { email, password } = this
+
       this.login({
         payload: {
-          email: this.email,
-          password: this.password
+          email,
+          password
         },
         context: this
       }).then(() => {
-        localforage.getItem('intended').then(name => {
-          if (isEmpty(name)) {
-            this.$router.replace({ name: 'home' })
-            return
-          }
-          this.$router.replace({ name })
-        })
+        this.$router.push({ path: '/' })
       })
     }
   }

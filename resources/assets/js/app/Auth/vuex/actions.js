@@ -2,36 +2,38 @@ import { isEmpty } from 'lodash'
 import { setHttpToken } from '../../../helpers'
 import localforage from 'localforage'
 
+const baseUrl = '/api/v1'
+
 export const register = ({ dispatch }, { payload, context }) => {
-  return axios.post('/api/register', payload).then((response) => {
-    dispatch('setToken', response.data.meta.token).then(() => {
-      dispatch('fetchUser')
+  return axios.post(`${baseUrl}/register`, payload).then((response) => {
+    dispatch('setToken', response.data.token).then(() => {
+      dispatch('fetchUser', response.data.user.id)
     })
   }).catch((error) => {
-    context.errors = error.response.data.errors
+    console.log(error)
   })
 }
 
 export const login = ({ dispatch }, { payload, context }) => {
-  return axios.post('/api/login', payload).then((response) => {
-    dispatch('setToken', response.data.meta.token).then(() => {
-      dispatch('fetchUser')
+  return axios.post(`${baseUrl}/login`, payload).then((response) => {
+    dispatch('setToken', response.data.token).then(() => {
+      dispatch('fetchUser', response.data.user.id)
     })
   }).catch((error) => {
-    context.errors = error.response.data.errors
+    console.log(error)
   })
 }
 
 export const logout = ({ dispatch }) => {
-  return axios.post('/api/logout').then((response) => {
+  return axios.post(`${baseUrl}/logout`).then((response) => {
     dispatch('clearAuth')
   })
 }
 
 export const fetchUser = ({ commit }, id) => {
-  return axios.get(`/api/user/${id}`).then((response) => {
+  return axios.get(`${baseUrl}/user/${id}`).then((response) => {
     commit('setAuthenticated', true)
-    commit('setUserData', response.data.data)
+    commit('setUserData', response.data)
   })
 }
 
@@ -41,6 +43,9 @@ export const setToken = ({ commit, dispatch }, token) => {
       setHttpToken(token)
     })
   }
+
+  commit('setToken', token)
+  setHttpToken(token)
 }
 
 export const checkTokenExists = ({ commit, dispatch }) => {

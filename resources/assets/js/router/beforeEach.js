@@ -3,9 +3,8 @@ import localforage from 'localforage'
 
 const beforeEach = (( to, from, next ) => {
   store.dispatch('auth/checkTokenExists').then(() => {
-
     if (to.meta.guest) {
-      next({ name: 'home' })
+      next({ name: 'dashboard' })
       return
     }
 

@@ -6,5 +6,5 @@ export const setHttpToken = token => {
     return
   }
 
-  window.axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+  window.axios.defaults.headers.common['Authorization'] = `Bearer ${token.token}`
 }

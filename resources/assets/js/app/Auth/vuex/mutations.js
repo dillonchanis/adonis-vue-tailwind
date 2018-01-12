@@ -1,5 +1,4 @@
 import localforage from 'localforage'
-import { isEmpty } from 'lodash'
 
 export const setAuthenticated = (state, isAuth) => {
   state.user.authenticated = isAuth
@@ -10,7 +9,7 @@ export const setUserData = (state, data) => {
 }
 
 export const setToken = (state, token) => {
-  if (isEmpty(token)) {
+  if (!token) {
     localforage.removeItem('authtoken')
     return
   }

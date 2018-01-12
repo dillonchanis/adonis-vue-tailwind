@@ -5,7 +5,7 @@ require('./bootstrap')
 
 localforage.config({
   driver: localforage.LOCALSTORAGE,
-  storeName: ''
+  storeName: 'app'
 })
 
 window.Vue = require('vue')
@@ -15,7 +15,7 @@ Vue.component('app', require('./components/App.vue'))
 store.dispatch('auth/setToken').then(() => {
   store.dispatch('auth/fetchUser').catch(() => {
     store.dispatch('auth/clearAuth')
-    router.replace({ name: 'login' })
+    router.push({ name: 'login' })
   })
 }).catch(() => {
   store.dispatch('auth/clearAuth')
@@ -23,5 +23,6 @@ store.dispatch('auth/setToken').then(() => {
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 })
