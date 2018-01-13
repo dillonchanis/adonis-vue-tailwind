@@ -1,6 +1,9 @@
 # Node modules
 node_modules
 
+# Public
+public
+
 # Adonis directory for storing tmp files
 tmp
 
