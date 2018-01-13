@@ -14,10 +14,22 @@
 */
 
 const Route = use('Route')
+const version = '/api/v1' // API Version
 
-Route.on('/').render('welcome')
+Route.on('/').render('home')
 
-Route.post('/api/v1/login', 'AuthController.create')
-Route.post('/api/v1/register', 'UserController.store')
+Route.group(() => {
+  Route.post('/register', 'AuthController.register')
+  Route.post('/login', 'AuthController.login')
+  Route.post('/logout', 'AuthController.logout')
+})
+.prefix(version)
 
-Route.get('/api/v1/user/:id', 'UserController.show')
+/**
+ * Protected Routes
+ */
+Route.group(() => {
+  Route.get('/user/:id', 'UserController.show')
+})
+.prefix(version)
+.middleware(['auth:jwt'])
