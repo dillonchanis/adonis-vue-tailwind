@@ -64,18 +64,17 @@ export default {
     }),
     submit () {
       const { username, email, password } = this
-      axios.post('/api/register', { username, email, password }).then(res => {
-        console.log(res)
+
+      this.register({
+        payload: {
+          username,
+          email,
+          password
+        },
+        context: this
+      }).then(() => {
+        this.$router.replace({ name: 'dashboard' })
       })
-      // this.register({
-      //   payload: {
-      //     email: this.email,
-      //     password: this.password
-      //   },
-      //   context: this
-      // }).then(() => {
-      //   this.$router.replace({ name: 'dashboard' })
-      // })
     }
   }
 }
