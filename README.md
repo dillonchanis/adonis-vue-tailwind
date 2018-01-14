@@ -44,3 +44,4 @@ adonis migration:run
 - [ ] Setup Stylelint
 - [ ] Stubs for Front End Unit Tests via Jest and Vue-test-utils
 - [ ] Better exception handling
+- [ ] JSX for Vue components
