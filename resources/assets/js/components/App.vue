@@ -1,3 +1,20 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <AppNavbar />
+    <section class="container mx-auto">
+      <div class="p-4">
+        <router-view></router-view>
+      </div>
+    </section>
+  </div>
 </template>
+
+<script>
+import AppNavbar from './Navbar'
+
+export default {
+  components: {
+    AppNavbar
+  }
+}
+</script>
