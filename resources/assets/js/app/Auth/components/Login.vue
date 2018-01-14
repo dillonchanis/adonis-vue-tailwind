@@ -1,32 +1,38 @@
 <template>
-  <div class="w-full max-w-xs">
-    <h2>Login</h2>
+  <div>
+    <h2 class="text-grey-darker mb-6">Login</h2>
 
-    <form @submit.prevent="submit">
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="email">
+    <form class="w-full max-w-md" @submit.prevent="submit">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                 for="email">
             Email
           </label>
-        </div>
-        <div class="md:w-2/3">
-          <input v-model="email" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="email" required="true" name="email">
+          <input v-model="email"
+                 class="appearance-none block w-full bg-grey-lighter text-grey-darker border-2 border-grey-lighter hover:border-blue rounded py-2 px-4 mb-3"
+                 type="email"
+                 required="true"
+                 placeholder="name@example.com"
+                 name="email">
         </div>
       </div>
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="password">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                 for="password">
             Password
           </label>
-        </div>
-        <div class="md:w-2/3">
-          <input v-model="password" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="password" placeholder="***********" required="true" name="password">
+          <input v-model="password"
+                 class="appearance-none block w-full bg-grey-lighter text-grey-darker border-2 border-grey-lighter hover:border-blue rounded py-2 px-4 mb-3"
+                 type="password"
+                 required="true"
+                 name="password">
         </div>
       </div>
-      <div class="md:flex md:items-center">
-        <div class="md:w-1/3"></div>
-        <div class="md:w-2/3">
-          <button class="shadow bg-green hover:bg-green-light text-white font-bold py-2 px-4 rounded" type="submit">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <button class="shadow bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 rounded" type="submit">
             Sign In
           </button>
         </div>
@@ -65,7 +71,7 @@ export default {
         },
         context: this
       }).then(() => {
-        this.$router.push({ path: '/' })
+        this.$router.replace({ path: '/' })
       })
     }
   }
