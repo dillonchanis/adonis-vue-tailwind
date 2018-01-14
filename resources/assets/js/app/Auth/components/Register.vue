@@ -1,46 +1,64 @@
 <template>
-  <div>
-    <h2>Register</h2>
-    <form @submit.prevent="submit" class="w-full max-w-xs">
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="username">
-            Username
-          </label>
-        </div>
-        <div class="md:w-2/3">
-          <input v-model="username" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="text" required name="username">
-        </div>
+  <div class="max-w-sm mx-auto bg-white rounded overflow-hidden shadow-light">
+    <div class="relative gradient-top px-6 py-4">
+      <div class="text-grey-darker font-bold text-xl mb-6 mt-2">
+        Register
       </div>
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="email">
-            Email
-          </label>
+      <form class="w-full max-w-md" @submit.prevent="submit">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="is-label"
+                  for="username">
+              Username
+            </label>
+            <input v-model="username"
+                  class="is-input mb-3"
+                  type="username"
+                  required="true"
+                  placeholder="johndoe"
+                  name="username">
+          </div>
         </div>
-        <div class="md:w-2/3">
-          <input v-model="email" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="email" required name="email">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="is-label"
+                  for="email">
+              Email
+            </label>
+            <input v-model="email"
+                  class="is-input mb-3"
+                  type="email"
+                  required="true"
+                  placeholder="name@example.com"
+                  name="email">
+          </div>
         </div>
-      </div>
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
-          <label class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4" for="password">
-            Password
-          </label>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="is-label"
+                  for="password">
+              Password
+            </label>
+            <input v-model="password"
+                  class="is-input mb-3"
+                  type="password"
+                  required="true"
+                  name="password">
+          </div>
         </div>
-        <div class="md:w-2/3">
-          <input v-model="password" class="bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-green rounded w-full py-2 px-4 text-grey-darker" type="password" placeholder="******************" required name="password">
+        <div class="flex flex-wrap -mx-3 mb-2">
+          <div class="w-full px-3">
+            <button class="btn-primary hover:bg-teal-light mr-4" type="submit">
+              Sign Up
+            </button>
+
+            <router-link class="no-underline text-grey hover:text-grey-dark" :to="{ name: 'login' }">
+              Login
+            </router-link>
+          </div>
         </div>
-      </div>
-      <div class="md:flex md:items-center">
-        <div class="md:w-1/3"></div>
-        <div class="md:w-2/3">
-          <button class="shadow bg-green hover:bg-green-light text-white font-bold py-2 px-4 rounded" type="submit">
-            Sign Up
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -79,3 +97,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.gradient-top::before {
+  content: '';
+  width: 100%;
+  height: .5rem;
+  top: 0;
+  left: 0;
+  background: -moz-linear-gradient(left, #04B3BA 0%, #0ABEA2 100%);
+  background: -webkit-linear-gradient(left, #04B3BA 0%,#0ABEA2 100%);
+  background: linear-gradient(to right, #04B3BA 0%,#0ABEA2 100%);
+  display: block;
+  position: absolute;
+}
+</style>

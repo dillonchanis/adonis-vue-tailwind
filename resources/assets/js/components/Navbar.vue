@@ -1,7 +1,7 @@
 <template>
-  <header class="bg-blue">
+  <header class="bg-teal">
     <div class="container mx-auto">
-      <nav class="flex items-center justify-between flex-wrap p-4">
+      <nav class="flex items-center justify-between flex-wrap py-4 px-4">
         <div class="flex items-center flex-no-shrink text-white mr-6">
           <span class="font-semibold text-xl tracking-tight">Brand</span>
         </div>
@@ -12,21 +12,21 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div class="text-sm lg:flex-grow">
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
+            <a href="#responsive-header" class="block no-underline mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
               Link 1
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white mr-4">
+            <a href="#responsive-header" class="block mt-4 no-underline lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
               Link 2
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-blue-lighter hover:text-white">
+            <a href="#responsive-header" class="block mt-4 no-underline lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
               Link 3
             </a>
           </div>
           <div>
-            <router-link v-if="!user.authenticated" :to="{ name: 'login' }" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">
+            <router-link v-if="!user.authenticated" :to="{ name: 'login' }" class="inline-block no-underline text-sm px-4 py-2 leading-none rounded text-teal-lighter hover:text-white mt-4 lg:mt-0">
               Login
             </router-link>
-            <a v-else href="#" @click.prevent="signOut" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">
+            <a v-else href="#" @click.prevent="signOut" class="inline-block no-underline text-sm px-4 py-2 leading-none rounded text-teal-lighter hover:text-white mt-4 lg:mt-0">
               Logout
             </a>
           </div>

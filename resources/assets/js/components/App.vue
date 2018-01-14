@@ -2,7 +2,7 @@
   <div>
     <AppNavbar />
     <section class="container mx-auto">
-      <div class="p-4">
+      <div class="px-4 py-6">
         <router-view></router-view>
       </div>
     </section>
