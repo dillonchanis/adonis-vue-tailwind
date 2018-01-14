@@ -14,14 +14,13 @@
 */
 
 const Route = use('Route')
-const version = '/api/v1' // API Version
+const version = 'api/v1' // API Version
 
 Route.on('/').render('home')
 
 Route.group(() => {
   Route.post('/register', 'AuthController.register')
   Route.post('/login', 'AuthController.login')
-  Route.post('/logout', 'AuthController.logout')
 })
 .prefix(version)
 
@@ -29,6 +28,7 @@ Route.group(() => {
  * Protected Routes
  */
 Route.group(() => {
+  Route.post('/logout', 'AuthController.logout')
   Route.get('/user/:id', 'UserController.show')
 })
 .prefix(version)

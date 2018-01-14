@@ -58,10 +58,14 @@ class AuthController {
     return response.status(200).json({ token, user })
   }
 
-  async logout ({ request, response }) {
-    await request.auth.logout()
+  async logout ({ auth }) {
+    const user = auth.current.user
+    const token = auth.getAuthHeader()
 
-    return response.redirect('/')
+    await user
+      .tokens()
+      .where('token', token)
+      .update({ is_revoked: true })
   }
 }
 
