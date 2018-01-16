@@ -32,4 +32,4 @@ Route.group(() => {
   Route.get('/user/:id', 'UserController.show')
 })
 .prefix(version)
-.middleware(['auth:jwt'])
+.middleware('auth')

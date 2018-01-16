@@ -6,21 +6,18 @@ class UserController {
   /**
    * Get a user.
    */
-  async show ({ request }) {
+  async show ({ auth, request }) {
     const id = request.params.id
-    let user
 
-    if (!id) {
-      return 'No user found.'
+    /**
+     * If currently logged in user matches ID sent in param
+     * Just return the logged in user.
+     */
+    if (auth.user.id === Number(id)) {
+      return auth.user
     }
 
-    try {
-      user = await User.find(id)
-    } catch (err) {
-      return err // todo
-    }
-
-    return user
+    return await User.findOrFail(id)
   }
 }
 
