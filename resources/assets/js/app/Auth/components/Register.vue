@@ -13,10 +13,14 @@
             </label>
             <input v-model="username"
                   class="is-input mb-3"
+                  :class="{ 'border border-red': errors.field === 'username' }"
                   type="username"
-                  required="true"
+                  required
                   placeholder="johndoe"
                   name="username">
+
+            <p v-if="errors.field === 'username'"
+             class="text-red text-xs italic">{{ errors.message }}</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -27,10 +31,14 @@
             </label>
             <input v-model="email"
                   class="is-input mb-3"
+                  :class="{ 'border border-red': errors.field === 'email' }"
                   type="email"
-                  required="true"
+                  required
                   placeholder="name@example.com"
                   name="email">
+
+            <p v-if="errors.field === 'email'"
+             class="text-red text-xs italic">{{ errors.message }}</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -41,9 +49,13 @@
             </label>
             <input v-model="password"
                   class="is-input mb-3"
+                  :class="{ 'border border-red': errors.field === 'password' }"
                   type="password"
-                  required="true"
+                  required
                   name="password">
+
+            <p v-if="errors.field === 'password'"
+             class="text-red text-xs italic">{{ errors.message }}</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-2">
@@ -70,9 +82,10 @@ export default {
 
   data () {
     return {
-      username: null,
-      email: null,
-      password: null
+      username: '',
+      email: '',
+      password: '',
+      errors: {}
     }
   },
 
@@ -80,19 +93,16 @@ export default {
     ...mapActions({
       register: 'auth/register'
     }),
-    submit () {
+
+    async submit () {
       const { username, email, password } = this
 
-      this.register({
-        payload: {
-          username,
-          email,
-          password
-        },
+      await this.register({
+        payload: { username, email, password },
         context: this
-      }).then(() => {
-        this.$router.replace({ name: 'dashboard' })
       })
+
+      this.$router.replace({ name: 'dashboard' })
     }
   }
 }

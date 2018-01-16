@@ -13,10 +13,14 @@
             </label>
             <input v-model="email"
                   class="is-input mb-3"
+                  :class="{ 'border border-red': errors.field === 'email' }"
                   type="email"
-                  required="true"
                   placeholder="name@example.com"
+                  required
                   name="email">
+
+            <p v-if="errors.field === 'email'"
+             class="text-red text-xs italic">{{ errors.message }}</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -27,9 +31,13 @@
             </label>
             <input v-model="password"
                   class="is-input mb-3"
+                  :class="{ 'border border-red': errors.field === 'password' }"
                   type="password"
-                  required="true"
+                  required
                   name="password">
+
+            <p v-if="errors.field === 'password'"
+             class="text-red text-xs italic">{{ errors.message }}</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-2">
@@ -58,8 +66,9 @@ export default {
 
   data () {
     return {
-      email: null,
-      password: null
+      email: '',
+      password: '',
+      errors: {}
     }
   },
 
@@ -68,18 +77,11 @@ export default {
       login: 'auth/login'
     }),
 
-    submit () {
+    async submit () {
       const { email, password } = this
 
-      this.login({
-        payload: {
-          email,
-          password
-        },
-        context: this
-      }).then(() => {
-        this.$router.replace({ path: '/' })
-      })
+      await this.login({ payload: { email, password }, context: this })
+      this.$router.replace({ path: '/' })
     }
   }
 }

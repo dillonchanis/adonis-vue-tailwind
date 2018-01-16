@@ -53,10 +53,9 @@ export default {
       logout: 'auth/logout'
     }),
 
-    signOut () {
-      this.logout().then(() => {
-        this.$router.replace('/login')
-      })
+    async signOut () {
+      await this.logout()
+      this.$router.replace({ name: 'login' })
     }
   }
 }
