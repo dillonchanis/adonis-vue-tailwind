@@ -1,23 +1,18 @@
 import store from '../store'
 import localforage from 'localforage'
 
+const user = store.getters['auth/user']
+
 const beforeEach = (( to, from, next ) => {
-  store.dispatch('auth/checkTokenExists').then(() => {
-    if (to.meta.guest) {
-      next({ name: 'dashboard' })
-      return
-    }
-
-    next();
-  }).catch(() => {
-    if (to.meta.needsAuth) {
-      localforage.setItem('intended', to.name)
+  if (to.matched.some(route => route.meta.needsAuth)) {
+    if (!user.authenticated) {
       next({ name: 'login' })
-      return
+    } else {
+      next()
     }
-
+  } else {
     next()
-  })
+  }
 })
 
 export default beforeEach
