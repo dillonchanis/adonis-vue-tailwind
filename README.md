@@ -7,7 +7,7 @@ This is a SPA/fullstack boilerplate for AdonisJs, it comes pre-configured with.
 3. Vuex
 4. TailwindCSS
 5. Laravel Mix
-6. JWT Authentication
+6. User Authentication
 
 ## Getting Started
 
