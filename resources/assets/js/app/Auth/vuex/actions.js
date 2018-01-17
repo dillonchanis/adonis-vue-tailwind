@@ -19,6 +19,7 @@ export const login = async ({ commit }, { payload, context }) => {
     context.errors = error.response.data[0]
   }
 }
+
 export const logout = async ({ dispatch }) => {
   await axios.post(`${baseUrl}/logout`)
   dispatch('clearAuth')
