@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import beforeEach from './beforeEach'
-import { routes as routes } from '../app/index'
+import { routes } from '../app/index'
 
 Vue.use(VueRouter)
 

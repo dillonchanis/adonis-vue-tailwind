@@ -57,9 +57,7 @@
 </template>
 
 <script>
-import localforage from 'localforage'
 import { mapActions } from 'vuex'
-import { isEmpty } from 'lodash'
 
 export default {
   name: 'login',
