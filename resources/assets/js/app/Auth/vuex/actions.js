@@ -1,3 +1,4 @@
+import axios from 'axios'
 const baseUrl = '/api/v1'
 
 export const register = async ({ commit }, { payload, context }) => {
