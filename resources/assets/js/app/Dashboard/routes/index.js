@@ -9,5 +9,5 @@ export default [
       guest: false,
       needsAuth: true
     }
-  },
+  }
 ]

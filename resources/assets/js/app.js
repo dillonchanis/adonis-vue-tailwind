@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import localforage from 'localforage'
 import store from './store'
 import router from './router'
@@ -8,12 +9,11 @@ localforage.config({
   storeName: 'app'
 })
 
-window.Vue = require('vue')
-
 Vue.component('app', require('./components/App.vue'))
 
+/* eslint-disable no-unused-vars */
 const app = new Vue({
-    el: '#app',
-    router,
-    store
+  el: '#app',
+  router,
+  store
 })
