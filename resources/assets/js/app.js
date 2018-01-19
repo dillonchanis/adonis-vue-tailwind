@@ -9,7 +9,7 @@ localforage.config({
   storeName: 'app'
 })
 
-Vue.component('app', require('./components/App.vue'))
+Vue.component('app', require('./App.vue'))
 
 /* eslint-disable no-unused-vars */
 const app = new Vue({
