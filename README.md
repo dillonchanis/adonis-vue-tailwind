@@ -40,8 +40,13 @@ adonis migration:run
 
 ### TODO
 
-- [ ] Setup JavaScript Linting (have option for AirBnB as well)
+- [X] Setup JavaScript Linting
 - [ ] Setup Stylelint
 - [ ] Stubs for Front End Unit Tests via Jest and Vue-test-utils
 - [ ] Better exception handling
-- [ ] JSX for Vue components
+- [X] JSX for Vue components
+
+
+### Future
+
+- Option for AirBnB linting
